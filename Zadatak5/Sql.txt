@@ -1,0 +1,40 @@
+Prva grupa zadataka
+
+a)
+SELECT * FROM `users` WHERE `users`.`dateCreated` > DATE_SUB(NOW(), INTERVAL 2 DAY);
+
+b)
+SELECT `users`.`firstname`, `users`.`lastname`, SUM(`orders`.`value`) as `ordersValue` FROM `orders` 
+LEFT JOIN `users` on `orders`.`userId` = `users`.`id`
+GROUP BY `orders`.`userId`;
+
+
+Druga grupa zadataka 
+c)
+SELECT `users`.`firstname`, `users`.`lastname` FROM `orders` 
+LEFT JOIN `users` on `orders`.`userId` = `users`.`id`
+GROUP BY `orders`.`userId`
+HAVING COUNT(`orders`.`userId`) >= 2;
+
+d)
+SELECT `users`.`firstname`, `users`.`lastname`, COUNT(`orderitems`.`orderId`) as `number_values` 
+FROM `orders` 
+LEFT JOIN `users` on `orders`.`userId` = `users`.`id` 
+LEFT JOIN `orderitems`on `orders`.`id` = `orderitems`.`orderId` 
+GROUP BY `orderitems`.`orderId`;
+
+e)
+SELECT `users`.`firstname`, `users`.`lastname`
+FROM `orders` 
+LEFT JOIN `users` on `orders`.`userId` = `users`.`id` 
+LEFT JOIN `orderitems`on `orders`.`id` = `orderitems`.`orderId` 
+GROUP BY `orderitems`.`orderId` 
+HAVING COUNT(`orderitems`.`orderId`) >= 2;
+
+f)
+SELECT `users`.`firstname`, `users`.`lastname` 
+FROM `orders` 
+LEFT JOIN `users` on `orders`.`userId` = `users`.`id` 
+LEFT JOIN `orderitems`on `orders`.`id` = `orderitems`.`orderId` 
+GROUP BY `users`.`id`, `orderitems`.`orderId` 
+HAVING COUNT(DISTINCT `orderitems`.`productId`) >= 3;

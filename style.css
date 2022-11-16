@@ -1,0 +1,141 @@
+/**COLORS --> **/
+.cl-primary{
+    background-color: #081575;
+}
+.cl-primary-light{
+    background-color: #0815753a;
+}
+.cl-secondary{
+    background-color: #fff;
+}
+.cl-transparent{
+    background-color: transparent !important;
+}
+.cl-dark{
+    background-color: #000;
+}
+
+.cl-primary-text{
+    color:#081575;
+}
+.cl-secondary-text{
+    color:#fff;
+}
+/** <-- */
+
+/**SECTIONS --> **/
+#section-content{
+    border-right: 1px solid rgba(0,0,0,.1);
+}
+#section-info{
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+/** <-- */
+
+/**CUSTOM --> **/
+.cl-form-register{
+    border: 3px solid #081575;
+    padding: 25px;
+    margin-top: 10vh;
+    color:#fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.cl-image-wrapper{
+    max-height: 100px;
+}
+/** <-- */
+
+/** Overwritten --> */
+.cl-pr-5{
+    padding-right: 3rem;
+}
+
+.cl-link:hover{
+    cursor: pointer;
+}
+.cl-header-image{
+    max-height: 100px;
+}
+.cl-progress{
+    width:12vw;
+}
+
+.cl-b-1 {
+    border-bottom: 1px solid #fff;
+}
+/**<-- */
+
+
+/** TEXT -->**/
+.cl-text-title{
+    font-size: 4vh;
+    font-weight: bolder;
+    color:#fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+.cl-text-subtitle{
+    font-weight: 100;
+    color:#fff;
+    font-family: Verdana, Tahoma, sans-serif;
+    text-transform: uppercase;
+}
+.cl-text-info{
+    font-size: 1.4vh;
+    letter-spacing: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.cl-text-section-title{
+    font-size: 2vh;
+    font-weight: bolder;
+    color: #000;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.cl-text-section-subtitle{
+    font-size:1.8vh;
+    font-weight: 400;
+    color:#000;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+.cl-text-section-timeline{
+    font-size:1.2vh;
+    font-weight: 500;
+    color:#c9cbd0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    text-align: left;
+}
+.cl-text-content{
+    font-size:1.6vh;
+    font-weight: 500;
+    color:#000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: left;
+    font-style: normal;
+}
+.cl-text-invalid{
+    font-size: 1.1vh;
+    font-weight: normal;
+    color:#990404;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+}
+/** <-- */
+
+
+
+/** --> Scan */
+.results-title{
+    visibility: hidden;
+    border-bottom: 1px solid #c9cbd0;
+}
+
+/** --> Slider */
+.cl-slider-slide{
+    min-height: 40vh;
+}
+.cl-slider{
+    border: 1px solid #081575;
+}

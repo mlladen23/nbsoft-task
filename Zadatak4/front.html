@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+
+<body class="cl-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button id="go-back" class="btn btn-danger">Back</button>
+            </div>
+        </div>
+
+        <div class="row text-center mt-5 results-title cl-secondary-text">
+            <div class="col-md-12">
+                Rezultati
+            </div>
+            <div class="col-md-5 cl-primary cl-secondary-text">Naziv</div>
+            <div class="col-md-1 cl-primary cl-secondary-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Ekstenzija fajla">Ext</div>
+            <div class="col-md-5 cl-primary cl-secondary-text">Putanja-Lokacija</div>
+            <div class="col-md-1 cl-primary cl-secondary-text"><i class="bi bi-gear"></i></div>
+
+        </div>
+        <div id="tree" class="results cl-secondary-text"></div>
+    </div>
+
+    <script>
+        const tree = $('#tree');
+        const directoryPath = ['C:\\xampp\\htdocs\\nbsoft\\Zadatak4\\dir'];
+        const baseURL = 'http://localhost/nbsoft/Zadatak4';
+
+        function onGoBack() {
+            if (directoryPath.length === 1) {
+                return;
+            }
+
+            directoryPath.pop();
+
+            renderTree(directoryPath);
+        }
+
+        function onDirectoryOpen() {
+            directoryPath.push($(this).data('path'));
+
+            renderTree(directoryPath);
+        }
+
+        function getExtensionIcon(extension) {
+            if (!extension) {
+                return '<i class="bi bi-folder-symlink"></i>';
+            }
+
+            switch (extension) {
+                case 'png':
+                case 'jpg':
+                case 'svg':
+                case 'jpeg':
+                case 'gif':
+                    return '<i class="bi bi-file-earmark-image"></i>';
+
+                case 'js':
+                case 'php':
+                case 'html':
+                case 'css':
+                case 'json':
+                    return '<i class="bi bi-file-earmark-code-fill"></i>';
+
+                case 'txt':
+                    return '<i class="bi bi-card-text"></i>';
+            }
+
+            return '<i class="bi bi-card-text"></i>';
+        }
+
+        function renderFile({
+            type,
+            path,
+            name,
+            extension
+        }) {
+            const icon = getExtensionIcon(extension);
+
+            switch (type) {
+                case 'directory':
+                    return `<div class="row cl-b-1">
+                      <div class="col-md-5 cl-primary-light">${name}</div>
+                      <div class="col-md-1 cl-primary text-center">${extension ?? 'folder'}</div>
+                      <div class="col-md-5 cl-primary-light">${path}</div>
+                      <a class="col-md-1 btn btn-primary text-center directory" data-path="${path}">${icon}</a>
+                    </div>`;
+
+                case 'file':
+                    return `<div class="row cl-b-1">
+                      <div class="col-md-5 cl-primary-light">${name}</div>
+                      <div class="col-md-1 cl-primary text-center">${extension ?? 'folder'}</div>
+                      <div class="col-md-5 cl-primary-light">${path}</div>
+                      <a class="col-md-1 btn btn-primary text-center" href="${`${baseURL}?request=fetch-file&path=${path}`}" target="_blank">${icon}</a>
+                    </div>`;
+            }
+
+            return `<div class="row cl-b-1">Unknown File Type</div>`;
+        }
+
+        async function scanDirectory(directory) {
+            return new Promise((resolve, reject) => {
+                if (!directory) {
+                    return reject(`Directory is not defined.`);
+                }
+
+                $.ajax({
+                    url: `${baseURL}?request=scan-directory&directory=${directory}`,
+                    dataType: 'json',
+                    success(response) {
+                        resolve(response);
+                    },
+                    error(error) {
+                        reject(error);
+                    }
+                });
+            });
+        }
+
+        async function renderTree(directoryPath) {
+            const files = await scanDirectory(directoryPath.at(-1));
+
+            $('.directory').off();
+
+            tree.empty().append(files.map((file) => renderFile(file)).join(''));
+
+            $('.directory').on('click', onDirectoryOpen);
+        }
+
+        $('#go-back').on('click', onGoBack);
+
+        renderTree(directoryPath);
+    </script>
+</body>
+
+</html>

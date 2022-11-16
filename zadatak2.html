@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css">
+
+		<link rel="stylesheet" href="style.css">
+
+		<link type="image/png" sizes="16x16" rel="icon" href="icons8-wrench-16.png">
+		<title>NB Soft - add new user</title>
+
+		<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script> -->
+		<script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+
+
+		<!--External JS-->
+		<script type="text/javascript" src="add_form.js"></script>
+
+		<!--Datetime picker-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+	</head>
+	<body class="cl-dark">
+		<div class="container cl-transparent">
+			<div class="row justify-content-md-center">
+				<div class="col-lg-6">
+					<form id="form-register" class="cl-form-register">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="id_first_name">Ime</label>
+									<input type="text" class="form-control" id="id_first_name" name="first_name" placeholder="Unesite Vaše ime...">
+									<span class="cl-text-invalid">Polje mora biti popunjeno!</span>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="id_last_name">Prezime</label>
+									<input type="text" class="form-control" id="id_last_name" name="last_name" placeholder="Unesite Vaše prezime...">
+									<span class="cl-text-invalid">Polje mora biti popunjeno!</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="id_date_birth">Godina rodjenja</label>
+									<!-- <select class="form-control" id="id_date_birth" name="date_birth">
+										<option value="1">1</option>
+									</select> -->
+									<input class="form-control" type="text" id="id_date_birth">
+									<span class="cl-text-invalid">Polje mora biti popunjeno!</span>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="id_male">Pol</label>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" value="male" id="id_male" name="gender">
+										<label class="form-check-label">
+											Muski
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" value="female" id="id_female" name="gender">
+										<label class="form-check-label">
+											Zenski
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 mt-2">
+								<div class="form-group">
+									<label for="address">Adresa</label>
+									<textarea class="form-control" id="id_address" name="address" rows="3" placeholder="Unesite Vašu adresu..."></textarea>
+									<span class="cl-text-invalid">Polje mora biti popunjeno!</span>
+								</div>
+							</div>
+							<div class="col-sm-6 mt-2">
+								<div class="form-group">
+									<label for="address">Grad</label>
+									<input type="text" class="form-control" name="city" id="id_city" placeholder="Unesite grad....">
+									<span class="cl-text-invalid">Polje mora biti popunjeno!</span>
+								</div>
+							</div>
+							<div class="col-sm-12 mt-2">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="true" id="id_female" name="gender">
+									<label class="form-check-label">
+										Prihvatam sve izjave propisane u <a class="cl-link cl-primary-text" href="terms.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Uslovi" target="_blank" >Uslovi usluga</a>  
+									</label>
+								</div>
+								<span class="cl-text-invalid">Opcija mora biti selektovana</span>
+							</div>
+						</div>
+						<div class="row mt-3">
+							<div class="col-sm-12 text-center">
+								<button class="btn btn-success m-1" type="submit">Unesi korisnika <i class="bi bi-person-plus cl-primary-text"></i></button>
+								<button class="btn btn-danger m-1">Restartuj formu <i class="bi bi-x-circle cl-primary-text"></i></button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+        </div>
+    </body>
+</html>
